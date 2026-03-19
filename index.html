@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumeetha Thahira Salim — Senior Product Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+:root {
+  --g: #4d9fff;
+  --g2: #2b7fe0;
+  --g-glow: rgba(77,159,255,0.13);
+  --g-border: rgba(77,159,255,0.22);
+  --bg: #020508;
+  --bg1: #070d14;
+  --bg2: #0c1520;
+  --ink: #f0f4f8;
+  --ink2: #b8c8d8;
+  --ink3: #4a7a9b;
+  --mono: 'IBM Plex Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+body.light {
+  --g: #0066cc;
+  --g2: #0052a3;
+  --g-glow: rgba(0,102,204,0.1);
+  --g-border: rgba(0,102,204,0.2);
+  --bg: #f5f6f8;
+  --bg1: #eceef2;
+  --bg2: #e2e5ea;
+  --ink: #0d1117;
+  --ink2: #3d4a5c;
+  --ink3: #6a7d90;
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--g-border);
+  color: var(--ink2);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  padding: .4rem .9rem;
+  cursor: crosshair;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  transition: border-color .2s, color .2s;
+}
+.theme-toggle:hover { border-color: var(--g); color: var(--g); }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--g-border); }
+::selection { background: var(--g); color: #020508; }
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(180deg, transparent 0, transparent 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 4px);
+  pointer-events: none; z-index: 9999;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 3rem;
+  background: rgba(3,3,3,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--g-border);
+}
+.logo { font-family: var(--display); font-size: 1.4rem; letter-spacing: .05em; color: var(--g); text-decoration: none; line-height: 1; }
+.logo span { color: var(--ink3); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--ink2); text-decoration: none;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  transition: color .2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--g);
+  transform: scaleX(0); transform-origin: left; transition: transform .2s;
+}
+.nav-links a:hover { color: var(--g); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.cta-btn {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: #020508; background: var(--g);
+  border: none; padding: .5rem 1.4rem;
+  cursor: crosshair; text-decoration: none;
+  clip-path: polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+  transition: background .2s, transform .15s; display: inline-block;
+}
+.cta-btn:hover { background: #fff; transform: translateY(-1px); }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding: 0 3rem 5rem; padding-top: 80px;
+  position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(77,159,255,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,159,255,0.032) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridDrift 22s linear infinite;
+}
+@keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:48px 48px} }
+.hero-blob {
+  position: absolute; width: 550px; height: 550px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(77,159,255,0.065) 0%, transparent 65%);
+  top: 50%; left: 35%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.hero-left { position: relative; z-index: 1; padding-bottom: 1rem; }
+.eyebrow {
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--g); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--g); }
+h1 {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  line-height: .92; letter-spacing: .02em;
+  color: var(--ink); margin-bottom: 1.75rem;
+}
+h1 em { color: var(--g); font-style: normal; }
+.hero-bio {
+  font-family: var(--sans); font-size: 15px;
+  color: var(--ink2); line-height: 1.7;
+  max-width: 440px; margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; gap: 1rem; align-items: center; }
+.ghost-btn {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--g); background: transparent; border: 1px solid var(--g-border);
+  padding: .5rem 1.4rem; text-decoration: none; cursor: crosshair;
+  transition: background .2s, border-color .2s;
+}
+.ghost-btn:hover { background: var(--g-glow); border-color: var(--g); }
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; justify-content: flex-end; align-items: flex-end; padding-bottom: 1rem;
+}
+.terminal-window { width: 340px; max-width: 100%; border: 1px solid var(--g-border); background: var(--bg1); font-size: 12px; }
+.terminal-bar {
+  background: var(--bg2); padding: .5rem .85rem;
+  border-bottom: 1px solid var(--g-border);
+  display: flex; align-items: center; gap: .5rem;
+}
+.t-dot { width: 9px; height: 9px; border-radius: 50%; }
+.t-dot.r { background: #ff5f57; }
+.t-dot.y { background: #febc2e; }
+.t-dot.g { background: #4d9fff; }
+.dots { display: flex; gap: 2px; }
+.terminal-bar span { margin-left: auto; font-size: 10px; color: var(--ink3); letter-spacing: .1em; }
+.terminal-body { padding: 1rem 1.2rem; line-height: 2.1; }
+.t-p { color: var(--g); margin-right: .4rem; }
+.t-out { color: var(--ink2); padding-left: 1rem; display: block; }
+.t-hi { color: var(--g); }
+.t-cursor {
+  display: inline-block; width: 7px; height: 13px;
+  background: var(--g); vertical-align: middle; margin-left: 2px;
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+.ripple { position: absolute; border-radius: 50%; background: rgba(77,159,255,0.3); transform: scale(0); animation: ripple 0.6s linear; pointer-events: none; } */
+
+/* SECTION COMMON */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 7rem 3rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.stag {
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--g); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.stag::before { content: '//'; color: var(--ink3); }
+h2.st {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  line-height: .98; letter-spacing: .02em;
+  color: var(--ink); margin-bottom: 2.5rem;
+}
+h2.st em { color: var(--g); font-style: normal; }
+
+/* ABOUT */
+#about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.about-text p { font-family: var(--sans); font-size: 15px; color: var(--ink2); line-height: 1.85; margin-bottom: 1.25rem; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 2.5rem; border: 1px solid var(--g-border); }
+.stat { padding: 1.5rem; border-right: 1px solid var(--g-border); border-bottom: 1px solid var(--g-border); }
+.stat:nth-child(2n) { border-right: none; }
+.stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+.stat-n { font-family: var(--display); font-size: 3rem; color: var(--g); line-height: 1; margin-bottom: .2rem; }
+.stat-l { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); }
+.exp-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.exp {
+  border-left: 2px solid var(--g-border); padding: 1rem 1.5rem;
+  background: var(--bg1); transition: border-color .2s, background .2s;
+}
+.exp:hover { border-color: var(--g); background: #0b0b0b; }
+.exp-role { font-family: var(--sans); font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: .2rem; }
+.exp-co { font-size: 11px; color: var(--g); letter-spacing: .05em; margin-bottom: .3rem; }
+.exp-yr { font-size: 10px; color: var(--ink3); letter-spacing: .08em; }
+
+/* PROJECTS / IMPACT */
+.proj-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; }
+.proj-head h2 { margin-bottom: 0; }
+.pgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.04); }
+.pcard {
+  background: var(--bg); padding: 2.25rem 2rem;
+  position: relative; overflow: hidden;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: background .25s; cursor: default;
+}
+.pcard::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--g); transform: scaleX(0); transform-origin: left;
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.pcard:hover { background: var(--bg1); }
+.pcard:hover::before { transform: scaleX(1); }
+.pnum { font-size: 10px; letter-spacing: .15em; color: var(--ink3); margin-bottom: 1.25rem; }
+.ptitle { font-family: var(--display); font-size: 1.45rem; line-height: 1.05; letter-spacing: .02em; color: var(--ink); margin-bottom: .75rem; }
+.pdesc { font-family: var(--sans); font-size: 13px; color: var(--ink2); line-height: 1.7; margin-bottom: 1.5rem; flex: 1; }
+.ptags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ptag { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--g); border: 1px solid var(--g-border); padding: 2px 8px; }
+.impact-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: 11px; color: var(--g); background: transparent;
+  border: 1px solid var(--g-border);
+  padding: 3px 10px; margin-bottom: 1rem; letter-spacing: .04em;
+  font-family: var(--mono); font-weight: 400;
+}
+.pcard.feat { grid-column: span 2; background: var(--bg1); flex-direction: row; gap: 2rem; align-items: flex-start; }
+.pcard.feat .ptitle { font-size: 1.9rem; }
+.pcard.last { grid-column: 2; }
+
+/* SKILLS */
+.skl-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.skl-col h3 { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; padding-bottom: .75rem; border-bottom: 1px solid rgba(255,255,255,.05); }
+.sbr { margin-bottom: 1.1rem; }
+.sbr-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink2); margin-bottom: .35rem; }
+.sbr-head span:last-child { color: var(--g); font-size: 11px; }
+.bar-t { height: 2px; background: rgba(255,255,255,.06); position: relative; overflow: hidden; }
+.bar-f { position: absolute; top: 0; left: 0; height: 100%; background: var(--g); width: 0; transition: width 1.3s cubic-bezier(.4,0,.2,1); }
+.tools { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; margin-top: 1rem; }
+.chip {
+  font-size: 11px; letter-spacing: .04em; color: var(--ink2);
+  border: 1px solid rgba(255,255,255,.07); padding: .4rem .75rem;
+  text-align: center; background: var(--bg1); transition: border-color .2s, color .2s;
+}
+.chip:hover { border-color: var(--g-border); color: var(--g); }
+
+/* CONTACT */
+#contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-left p { font-family: var(--sans); font-size: 15px; color: var(--ink2); line-height: 1.8; max-width: 360px; margin-bottom: 2rem; }
+.ch-list { display: flex; flex-direction: column; gap: .75rem; }
+.ch {
+  display: flex; align-items: center; gap: 1rem;
+  color: var(--ink2); text-decoration: none; font-size: 12px; letter-spacing: .04em;
+  padding: .85rem 1rem; border: 1px solid rgba(255,255,255,.05);
+  background: var(--bg1); transition: border-color .2s, color .2s;
+}
+.ch:hover { border-color: var(--g-border); color: var(--g); }
+.ch-ic { color: var(--g); min-width: 20px; font-size: 14px; }
+.ch-lb { font-size: 10px; color: var(--ink3); margin-top: 1px; display: block; letter-spacing: .08em; }
+.form { display: flex; flex-direction: column; gap: 1rem; }
+.fg { display: flex; flex-direction: column; gap: .35rem; }
+.fg label { font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: var(--ink3); }
+.fg input, .fg textarea {
+  background: var(--bg1); border: 1px solid rgba(255,255,255,.07);
+  color: var(--ink); font-family: var(--mono); font-size: 12px;
+  padding: .75rem 1rem; outline: none; resize: vertical;
+  transition: border-color .2s; cursor: crosshair;
+}
+.fg input:focus, .fg textarea:focus { border-color: var(--g); }
+.fg input::placeholder, .fg textarea::placeholder { color: var(--ink3); }
+.fg textarea { min-height: 110px; }
+#fok { display: none; color: var(--g); font-size: 12px; letter-spacing: .05em; margin-top: .25rem; }
+
+/* RIPPLE */
+.ripple-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  border: 1.5px solid rgba(77,159,255,0.75);
+  box-shadow: 0 0 8px rgba(77,159,255,0.2);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 1;
+  animation: ripple-expand 1.1s ease-out forwards;
+}
+@keyframes ripple-expand {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.85; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* COPY TO CLIPBOARD */
+.copy-tooltip {
+  position: fixed;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  font-size: 11px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition: opacity 160ms ease, transform 160ms ease;
+  z-index: 100000;
+}
+.copy-tooltip.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* FOOTER */
+footer { border-top: 1px solid rgba(255,255,255,.04); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+footer p { font-size: 11px; color: var(--ink3); letter-spacing: .05em; }
+footer a { color: var(--g); text-decoration: none; }
+.fr { display: flex; gap: 1.5rem; }
+.fr a { font-size: 11px; color: var(--ink3); text-decoration: none; letter-spacing: .08em; transition: color .2s; }
+.fr a:hover { color: var(--g); }
+
+/* ANIMATIONS */
+.rv { opacity: 1; transform: translateY(0); transition: opacity .65s ease, transform .65s ease; }
+.rv.animate { opacity: 0; transform: translateY(28px); }
+.rv.animate.in { opacity: 1; transform: translateY(0); }
+
+/* LIGHT MODE OVERRIDES */
+body.light body::after { background: repeating-linear-gradient(180deg, transparent 0, transparent 3px, rgba(0,0,0,0.015) 3px, rgba(0,0,0,0.015) 4px); }
+body.light nav { background: rgba(245,246,248,0.92); }
+body.light .nav-links.open { background: rgba(245,246,248,0.97); }
+body.light .wrap { border-top-color: rgba(0,0,0,0.07); }
+body.light .pgrid { background: rgba(0,0,0,0.07); }
+body.light .bar-t { background: rgba(0,0,0,0.08); }
+body.light .chip { border-color: rgba(0,0,0,0.09); }
+body.light .exp { background: var(--bg1); }
+body.light .ch { background: var(--bg1); border-color: rgba(0,0,0,0.08); }
+body.light .terminal-window { border-color: var(--g-border); }
+body.light .terminal-bar { background: var(--bg2); }
+body.light .fg input, body.light .fg textarea { background: var(--bg1); border-color: rgba(0,0,0,0.09); color: var(--ink); }
+body.light footer { border-top-color: rgba(0,0,0,0.07); }
+body.light .cta-btn { color: #fff; }
+
+/* MOBILE NAV */
+.nav-links.open {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: rgba(3,3,3,0.97);
+  border-bottom: 1px solid var(--g-border);
+  padding: 1.5rem 1.5rem;
+  gap: 1.25rem;
+  backdrop-filter: blur(16px);
+  z-index: 499;
+}
+
+/* ── TABLET (max 1024px) ── */
+@media (max-width: 1024px) {
+  #hero { padding: 0 2rem 4rem; padding-top: 80px; }
+  .terminal-window { width: 280px; font-size: 11px; }
+  .terminal-body { padding: .75rem 1rem; line-height: 1.9; }
+  .pgrid { grid-template-columns: repeat(2, 1fr); }
+  .pcard.feat { grid-column: span 2; }
+  .pcard.last { grid-column: auto; }
+  .skl-layout { gap: 2rem; }
+}
+
+/* ── SMALL TABLET / LARGE MOBILE (max 768px) ── */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .logo { font-size: 1.2rem; }
+  #menuBtn { display: block !important; }
+
+  #hero {
+    grid-template-columns: 1fr;
+    padding: 90px 1.5rem 5rem;
+    align-items: start;
+    min-height: auto;
+  }
+  .hero-right {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 0;
+  }
+  .terminal-window { width: 100%; font-size: 11px; }
+  .terminal-body { padding: .75rem 1rem; line-height: 1.85; }
+  .hero-left { padding-bottom: 0; }
+  .hero-bio { font-size: 14px; max-width: 100%; }
+  .hero-actions { flex-wrap: wrap; }
+
+  .wrap { padding: 4rem 1.5rem; }
+
+  #about .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat-n { font-size: 2.4rem; }
+
+  .pgrid { grid-template-columns: 1fr; background: none; gap: 1px; }
+  .pcard { padding: 1.75rem 1.5rem; }
+  .pcard.feat { grid-column: span 1; flex-direction: column; gap: 1rem; }
+  .pcard.feat .ptitle { font-size: 1.5rem; }
+  .pcard.last { grid-column: auto; }
+  .proj-head { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+  .skl-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .tools { grid-template-columns: repeat(2, 1fr); }
+
+  #contact .wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-left p { max-width: 100%; }
+
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+  .fr { justify-content: center; }
+}
+
+/* ── MOBILE (max 480px) ── */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+
+  nav { padding: .85rem 1.2rem; }
+  .cta-btn { padding: .45rem 1rem; font-size: 10px; }
+
+  #hero { padding: 80px 1.2rem 4rem; }
+  .eyebrow { font-size: 10px; margin-bottom: 1rem; }
+  .hero-bio { font-size: 13px; margin-bottom: 2rem; }
+  .hero-actions { gap: .75rem; }
+  .ghost-btn, .cta-btn { font-size: 10px; padding: .45rem 1rem; }
+  .terminal-body { font-size: 10px; line-height: 1.75; }
+
+  .wrap { padding: 3rem 1.2rem; }
+  .stag { font-size: 9px; }
+
+  .about-text p { font-size: 13px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: 1rem; }
+  .stat-n { font-size: 2rem; }
+  .exp-role { font-size: 13px; }
+
+  .pcard { padding: 1.5rem 1.2rem; }
+  .ptitle { font-size: 1.2rem; }
+  .pdesc { font-size: 12px; }
+  .impact-badge { font-size: 10px; }
+
+  .tools { grid-template-columns: repeat(2, 1fr); }
+  .chip { font-size: 10px; padding: .35rem .6rem; }
+
+  .ch { padding: .75rem .85rem; font-size: 11px; }
+
+  footer { padding: 1.2rem; }
+  footer p { font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="logo">STS<span>_</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#impact" onclick="closeMenu()">Impact</a></li>
+    <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+      <span id="themeIcon">☀</span><span id="themeLabel">Light</span>
+    </button>
+    <a href="#contact" class="cta-btn">Get in Touch</a>
+    <button id="menuBtn" onclick="toggleMenu()" aria-label="Menu" style="display:none;background:none;border:1px solid var(--g-border);color:var(--g);padding:.4rem .6rem;cursor:crosshair;font-size:1rem;line-height:1;">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-left">
+    <div class="eyebrow">Senior Product Leader · AI · API · CPaaS</div>
+    <h1>SUMEETHA<br><em>THAHIRA</em><br>SALIM</h1>
+    <p class="hero-bio">AI Product leader with 13+ years building global SaaS products - from conversational AI and video platforms to developer APIs. Track record of building and scaling zero-to-one products.</p>
+    <div class="hero-actions">
+      <a href="#impact" class="cta-btn">View My Work ↓</a>
+      <a href="#contact" class="ghost-btn">Say Hello</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="terminal-window">
+      <div class="terminal-bar">
+        <div class="dots"><span class="t-dot r"></span><span class="t-dot y"></span><span class="t-dot g"></span></div>
+        <span>~/profile — bash</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-p">❯</span>cat sumeetha.json</div>
+        <span class="t-out">{</span>
+        <span class="t-out">&nbsp;&nbsp;"role": <span class="t-hi">"Staff PM / AI Platform"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;"company": <span class="t-hi">"Kong HQ"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;"location": <span class="t-hi">"Bengaluru, IN"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;"yoe": <span class="t-hi">13</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;"focus": [</span>
+        <span class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-hi">"AI Agents"</span>, <span class="t-hi">"LLM/RAG"</span>,</span>
+        <span class="t-out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-hi">"CPaaS"</span>, <span class="t-hi">"Dev Platforms"</span></span>
+        <span class="t-out">&nbsp;&nbsp;],</span>
+        <span class="t-out">&nbsp;&nbsp;"status": <span class="t-hi">"open_to_connect"</span></span>
+        <span class="t-out">}</span>
+        <div style="margin-top:.5rem"><span class="t-p">❯</span><span class="t-cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-text rv">
+      <div class="stag">About</div>
+      <h2 class="st">Product leader<br>at the <em>frontier</em></h2>
+      <p>I am passionate about using technology to build delightful products that solve users' pain points. I have shipped multi-agent systems, AI products, developer platforms, and video products at companies like Cisco, Kong, and imimobile. 
+      <br/>I am experienced in leading high performing cross-functional teams.</p>
+      <!-- <p>Currently at Kong, I lead AI platform product for a flagship API management product worth $100M ARR handling 400B+ API calls a day.</p> -->
+      <div>
+        <!-- <div class="stat"><div class="stat-n">13+</div><div class="stat-l">Years Experience</div></div>
+        <div class="stat"><div class="stat-n">$300M</div><div class="stat-l">ARR Platform Led</div></div>
+        <div class="stat"><div class="stat-n">400B+</div><div class="stat-l">API calls / day</div></div>
+        <div class="stat"><div class="stat-n">3.75</div><div class="stat-l">ISB GPA · Dean's List</div></div> -->
+      </div>
+    </div>
+    <div class="rv" style="transition-delay:.15s">
+      <div class="stag">Experience</div>
+      <div class="exp-list">
+        <div class="exp">
+          <div class="exp-role">Staff Product Manager, AI Platform</div>
+          <div class="exp-co">Kong HQ</div>
+          <div class="exp-yr">June 2025 — Present</div>
+        </div>
+        <div class="exp">
+          <div class="exp-role">Senior Leader, Product Management</div>
+          <div class="exp-co">Webex by Cisco — CPaaS Group</div>
+          <div class="exp-yr">Oct 2022 — June 2025</div>
+        </div>
+        <div class="exp">
+          <div class="exp-role">Leader, Product Management</div>
+          <div class="exp-co">Webex by Cisco — CPaaS Group</div>
+          <div class="exp-yr">Sep 2021 — Oct 2022</div>
+        </div>
+        <div class="exp">
+          <div class="exp-role">Principal Product Manager</div>
+          <div class="exp-co">imimobile (Acq. by Cisco)</div>
+          <div class="exp-yr">May 2017 — Aug 2021</div>
+        </div>
+        <div class="exp">
+          <div class="exp-role">Associate Developer → Tech Lead</div>
+          <div class="exp-co">Goldman Sachs</div>
+          <div class="exp-yr">June 2012 — April 2016</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT / PROJECTS -->
+<section id="impact">
+  <div class="wrap">
+    <div class="proj-head rv">
+      <div><div class="stag">Impact</div><h2 class="st">Products I've <em>shipped</em></h2></div>
+    </div>
+    <div class="pgrid rv" style="transition-delay:.1s">
+
+      <!-- Featured -->
+      <div class="pcard feat">
+        <div>
+          <div class="pnum">01 — Kong HQ · Current</div>
+          <div class="ptitle">Multi-Agent AI<br>Assistant for Kong</div>
+        </div>
+        <div>
+          <div class="impact-badge">▲ 25% support query coverage</div>
+          <p class="pdesc">Led development of a multi-agent conversational AI assistant for platform engineers and developers. Launched beta with 30+ enterprise customers, automated product Q&A using RAG, and built AI agents for API issue triage. Also led the centralized MCP server for Kong and defined MCP platform strategy across internal teams.</p>
+          <div class="ptags">
+            <span class="ptag">AI Agents</span><span class="ptag">LLM</span><span class="ptag">RAG</span>
+            <span class="ptag">MCP</span><span class="ptag">RBAC</span><span class="ptag">Prompt Eval</span>
+          </div>
+        </div>
+        <div class="feat-badge">Current Role</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pnum">02 — Kong HQ</div>
+        <div class="ptitle">In-Product Search<br>Revamp</div>
+        <div class="impact-badge">▲ 130% search adoption</div>
+        <p class="pdesc">Revamped the in-product search experience across Kong's flagship platform, delivering a 130% increase in search adoption.</p>
+        <div class="ptags"><span class="ptag">Search UX</span><span class="ptag">API Platform</span></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pnum">03 — Cisco Webex</div>
+        <div class="ptitle">Generative AI<br>Video Platform</div>
+        <div class="impact-badge">43% CTR · 74% completion</div>
+        <p class="pdesc">Built a gen-AI-powered video communication product for enterprise engagement - AI avatars, voice-over, in-video interactivity. Field trial with a Fortune 500 customer, $200K ARR in trial phase.</p>
+        <div class="ptags"><span class="ptag">Gen AI</span><span class="ptag">Video</span><span class="ptag">WebRTC</span></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pnum">04 — Cisco Webex</div>
+        <div class="ptitle">Integrations<br>Studio (iPaaS)</div>
+        <div class="impact-badge">10x faster deployments</div>
+        <p class="pdesc">Led a no-code marketplace enabling Cisco partners to build and deploy reusable integrations ~10x faster. Expanded to support AI agent workflows, CRM/CDP connectors, and secure credential management.</p>
+        <div class="ptags"><span class="ptag">iPaaS</span><span class="ptag">No-Code</span><span class="ptag">AI Workflows</span></div>
+      </div>
+
+      <div class="pcard">
+        <div class="pnum">05 — imimobile / Cisco</div>
+        <div class="ptitle">eClinic — HIPAA<br>Telehealth Platform</div>
+        <div class="impact-badge">$1M ARR · 1 to 10 customers</div>
+        <p class="pdesc">Built a HIPAA-compliant telehealth platform. Drove NHS UK adoption during COVID, added real-time translation and reminders — reducing missed appointments by 33%.</p>
+        <div class="ptags"><span class="ptag">Healthcare</span><span class="ptag">WebRTC</span><span class="ptag">HIPAA</span></div>
+      </div>
+
+      <div class="pcard last">
+        <div class="pnum">06 — Cisco Webex</div>
+        <div class="ptitle">Programmable<br>Video API Platform</div>
+        <p class="pdesc">Co-led roadmap and launch of programmable video APIs and SDKs using WebRTC, enabling developers to embed video in web and mobile apps with full UX control.</p>
+        <div class="ptags"><span class="ptag">WebRTC</span><span class="ptag">APIs</span><span class="ptag">SDKs</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="stag rv">Skills</div>
+    <h2 class="st rv">Expertise &amp; <em>toolkit</em></h2>
+    <div class="skl-layout rv" style="transition-delay:.1s">
+      <div>
+        <div class="skl-col">
+          <h3>Product Competencies</h3>
+          <div class="sbr"><div class="sbr-head"><span>AI Product Strategy (Agents, LLM, RAG)</span></div><div class="bar-t"><div class="bar-f" data-w="96"></div></div></div>
+          <div class="sbr"><div class="sbr-head"><span>Enterprise SaaS / CPaaS</span></div><div class="bar-t"><div class="bar-f" data-w="95"></div></div></div>
+          <div class="sbr"><div class="sbr-head"><span>Developer &amp; API Platforms</span></div><div class="bar-t"><div class="bar-f" data-w="93"></div></div></div>
+          <div class="sbr"><div class="sbr-head"><span>Cross-functional Team Leadership</span></div><div class="bar-t"><div class="bar-f" data-w="95"></div></div></div>
+          <div class="sbr"><div class="sbr-head"><span>Video / WebRTC Platforms</span></div><div class="bar-t"><div class="bar-f" data-w="88"></div></div></div>
+          <div class="sbr"><div class="sbr-head"><span>Zero-to-One Product Building</span></div><div class="bar-t"><div class="bar-f" data-w="94"></div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="skl-col">
+          <h3>Technical &amp; Domain Areas</h3>
+          <div class="tools">
+            <div class="chip">AI Agents</div><div class="chip">LLM / RAG</div><div class="chip">MCP</div>
+            <div class="chip">WebRTC</div><div class="chip">API</div><div class="chip">CPaaS</div>
+            <div class="chip">iPaaS</div><div class="chip">Video streaming</div><div class="chip">CX</div>
+            <div class="chip">Prompt Eval</div><div class="chip">AuthN/Z</div><div class="chip">Events</div>
+            <div class="chip">Observability</div><div class="chip">HIPAA</div><div class="chip">SDK</div>
+          </div>
+        </div>
+        <div class="skl-col" style="margin-top:2.5rem">
+          <h3>Education</h3>
+          <div class="tools" style="grid-template-columns:1fr">
+            <div class="chip" style="text-align:left; padding:.6rem 1rem;">
+              <span style="color:var(--g); font-size:10px; text-transform:uppercase; letter-spacing:.1em;">ISB Hyderabad</span><br>
+              <span style="font-size:12px;">PGPM · Finance &amp; Strategy · Dean's List · 3.75 GPA</span>
+            </div>
+            <div class="chip" style="text-align:left; padding:.6rem 1rem;">
+              <span style="color:var(--g); font-size:10px; text-transform:uppercase; letter-spacing:.1em;">NIT Calicut</span><br>
+              <span style="font-size:12px;">B.Tech ECE · Top 5% · 9.17 / 10 GPA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-left rv">
+      <div class="stag">Contact</div>
+      <h2 class="st">Let's build<br>something <em>great</em></h2>
+      <p>Whether it's an exciting PM role, a collaboration, or just a conversation about product strategy - I'd love to connect.</p>
+      <div class="ch-list">
+        <a href="mailto:sumeetha06@gmail.com" class="ch copy-email" data-email="sumeetha06@gmail.com">
+          <span class="ch-ic">✉</span>
+          <div><span>sumeetha06@gmail.com</span><span class="ch-lb">Email</span></div>
+        </a>
+        <a href="https://linkedin.com/in/sumeetha-ts" target="_blank" class="ch">
+          <span class="ch-ic">◈</span>
+          <div><span>linkedin/sumeetha-ts</span><span class="ch-lb">LinkedIn</span></div>
+        </a>
+        <a href="https://github.com/sumeetha" target="_blank" class="ch">
+          <span class="ch-ic"></span>
+          <div><span>github.com/sumeetha</span><span class="ch-lb">GitHub</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <a href="#">Sumeetha Thahira Salim</a>. Senior Product Leader · <span style="color:var(--ink3)">Bengaluru, India</span>.</p>
+  <div class="fr">
+    <a href="#hero">Top ↑</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleTheme() {
+  var isLight = document.body.classList.toggle('light');
+  document.getElementById('themeIcon').textContent = isLight ? '☾' : '☀';
+  document.getElementById('themeLabel').textContent = isLight ? 'Dark' : 'Light';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+// Restore saved preference
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  document.getElementById('themeIcon').textContent = '☾';
+  document.getElementById('themeLabel').textContent = 'Dark';
+}
+
+function toggleMenu() {
+  var nav = document.getElementById('navLinks');
+  var btn = document.getElementById('menuBtn');
+  nav.classList.toggle('open');
+  btn.textContent = nav.classList.contains('open') ? '✕' : '☰';
+}
+function closeMenu() {
+  var nav = document.getElementById('navLinks');
+  var btn = document.getElementById('menuBtn');
+  nav.classList.remove('open');
+  btn.textContent = '☰';
+}
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.bar-f[data-w]').forEach(b => {
+        setTimeout(() => b.style.width = b.dataset.w + '%', 250);
+      });
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.rv').forEach(el => {
+  el.classList.add('animate');
+  io.observe(el);
+});
+
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('fsub');
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  setTimeout(() => {
+    btn.style.display = 'none';
+    document.getElementById('fok').style.display = 'block';
+    e.target.reset();
+  }, 1100);
+}
+
+(function() {
+  const t = document.querySelector('h1 em');
+  if (!t) return;
+  const full = t.textContent; t.textContent = '';
+  let i = 0;
+  setTimeout(() => {
+    const iv = setInterval(() => {
+      t.textContent = full.slice(0, ++i);
+      if (i >= full.length) clearInterval(iv);
+    }, 80);
+  }, 700);
+})();
+
+</script>
+<script>
+(function() {
+  var last = 0;
+  document.addEventListener('mousemove', function(e) {
+    var now = Date.now();
+    if (now - last < 50) return;
+    last = now;
+    var el = document.createElement('div');
+    el.className = 'ripple-ring';
+    var size = 60 + Math.random() * 80;
+    el.style.left = e.clientX + 'px';
+    el.style.top = e.clientY + 'px';
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    document.body.appendChild(el);
+    el.addEventListener('animationend', function() { el.remove(); });
+  });
+})();
+
+  function initEmailCopy() {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'copy-tooltip';
+    tooltip.textContent = 'Copied';
+    document.body.appendChild(tooltip);
+
+    const showTooltip = (x, y) => {
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+      tooltip.classList.add('visible');
+      clearTimeout(tooltip.hideTimeout);
+      tooltip.hideTimeout = setTimeout(() => tooltip.classList.remove('visible'), 900);
+    };
+
+    document.querySelectorAll('.copy-email').forEach(el => {
+      el.addEventListener('click', async event => {
+        event.preventDefault();
+        const email = el.dataset.email;
+        if (!email) return;
+        try {
+          await navigator.clipboard.writeText(email);
+          const rect = el.getBoundingClientRect();
+          showTooltip(rect.left + rect.width / 2, rect.top - 10);
+        } catch (err) {
+          console.warn('Copy failed', err);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initEmailCopy);
+</script>
+</body>
+</html>
